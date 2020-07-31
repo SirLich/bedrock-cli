@@ -1,0 +1,27 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.sirlich_echo": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "echo_event_introduction": "query.skin_id == 1"
+                        }
+                    ]
+                },
+                "echo_event_introduction": {
+                    "transitions": [
+                        {
+                            "default": "query.skin_id != 1"
+                        }
+                    ],
+                    "on_entry": [
+                        "/say Hey there!",
+                        "@s echo:clear"
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,119 @@
+{
+    "format_version": "1.14.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "sirlich:echo",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false,
+            "scripts": {
+                "animate": [
+                    "sirlich:echo_commands"
+                ]
+            },
+            "animations": {
+                "sirlich:echo_commands": "controller.animation.sirlich_echo"
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "width": 1,
+                "height": 2
+            },
+            "minecraft:push_through": {
+                "value": 1
+            },
+            "minecraft:health": {
+                "value": 5,
+                "max": 5
+            },
+            "minecraft:physics": {},
+            "minecraft:nameable": {}
+        },
+        "component_groups": {
+            "echo:introduction": {
+                "minecraft:interact": {
+                    "interactions": [
+                        {
+                            "on_interact": {
+                                "filters": {
+                                    "all_of": [
+                                        {
+                                            "test": "is_family",
+                                            "subject": "other",
+                                            "value": "player"
+                                        },
+                                        {
+                                            "test": "has_equipment",
+                                            "domain": "hand",
+                                            "subject": "other",
+                                            "value": "name_tag",
+                                            "operator": "!="
+                                        }
+                                    ]
+                                },
+                                "interact_text": "Click to Talk",
+                                "event": "echo:event_introduction"
+                            }
+                        }
+                    ]
+                }
+            },
+            "echo:event_introduction": {
+                "minecraft:skin_id": {
+                    "value": 1
+                }
+            },
+            "echo:execute_no_command": {
+                "minecraft:skin_id": {
+                    "value": 0
+                }
+            },
+            "echo:despawn": {
+                "minecraft:instant_despawn": {}
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "echo:introduction"
+                    ]
+                }
+            },
+            "echo:clear": {
+                "add": {
+                    "component_groups": [
+                        "echo:execute_no_command"
+                    ]
+                },
+                "remove": {
+                    "component_groups": [
+                        "echo:introduction"
+                    ]
+                }
+            },
+            "echo:despawn": {
+                "add": {
+                    "component_groups": [
+                        "echo:despawn"
+                    ]
+                }
+            },
+            "echo:introduction": {
+                "add": {
+                    "component_groups": [
+                        "echo:introduction"
+                    ]
+                }
+            },
+            "echo:event_introduction": {
+                "add": {
+                    "component_groups": [
+                        "echo:event_introduction"
+                    ]
+                }
+            }
+        }
+    }
+}

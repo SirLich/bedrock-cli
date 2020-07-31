@@ -1,0 +1,35 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "pack.name",
+		"description": "pack.description",
+		"uuid": "FAKE",
+		"min_engine_version": [
+			1,
+			13,
+			0
+		],
+		"version": [
+			0,
+			0,
+			1
+		]
+	},
+	"modules": [{
+		"type": "resources",
+		"uuid": "FAKE",
+		"version": [
+			0,
+			0,
+			1
+		]
+	}],
+	"dependencies": [{
+		"uuid": "FAKE",
+		"version": [
+			0,
+			0,
+			1
+		]
+	}]
+}
